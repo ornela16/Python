@@ -11,4 +11,3 @@ def month_to_season(n):
         return "сезон Осень"
 
 month_to_season(int(input("Номер месяца n = ")))
-
