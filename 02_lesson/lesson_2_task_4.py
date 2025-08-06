@@ -18,6 +18,8 @@ def fizz_buzz(n):
 
 fizz_buzz(int(input("n = ")))
 
+# fizz_buzz(18)
+
 # простой список
 
 # def fizz_buzz(n):
