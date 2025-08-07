@@ -10,4 +10,4 @@ def month_to_season(n):
     if n in (9,10,11):
         print("сезон Осень")
 
-month_to_season(int(input("Номер месяца n = ")))
+month_to_season(int(input("номер месяца n = ")))
