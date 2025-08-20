@@ -14,3 +14,4 @@ class Mailing:
     def mailing (self):
          return f"{self.to_address},{self.from_address},{self.cost},{self.track}"
 
+

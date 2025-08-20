@@ -8,3 +8,5 @@ class Address:
 
     def address(self):
         print(f"{self.index},{self.sity},{self.street},{self.house} - {self.flat}")
+
+
