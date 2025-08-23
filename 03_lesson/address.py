@@ -6,7 +6,7 @@ class Address:
         self.house = house
         self.flat = flat
 
-    def address(self):
-        print(f"{self.index},{self.sity},{self.street},{self.house} - {self.flat}")
+    def __str__(self):
+        return(f"{self.index}, {self.sity}, {self.street}, {self.house} - {self.flat}")
 
 
