@@ -1,5 +1,3 @@
-from typing import AnyStr
-
 import pytest
 from string_utils import StringUtils
 
@@ -19,6 +17,11 @@ def test_capitalize_positive(input_str, expected):
     ("", ""), ("   ", "   "), ("-.","-.") ] )
 def test_capitalize_negative(input_str, expected):
     assert string_utils.capitalize(input_str) == expected
+
+@pytest.mark.negative
+@pytest.mark.parametrize("None")
+def test_capitalize_negative(None):
+    assert string_utils.capitalize(None) == TypeError
 
 
 @pytest.mark.positive
@@ -50,21 +53,15 @@ def test_contains_negative(input_str, input_symbol, result):
 
 
 @pytest.mark.positive
-@pytest.mark.delete_symbol("input_str, input_symbol, result", [ ("Skyprof","f","Skypro"),("python","thon","py"),
+@pytest.mark.parametrize("input_str, input_symbol, result", [ ("Skyprof","f","Skypro"),("python","thon","py"),
     ("01 сентября","0","1 сентября") ] )
 def test_delete_symbol_positive(input_str, input_symbol, result):
     res = string_utils.delete_symbol(input_str, input_symbol)
     assert res == result
 
 @pytest.mark.negative
-@pytest.mark.delete_symbol("input_str, input_symbol, result", [ ("Skypro","f","Skypro"),(" ","t"," "),
+@pytest.mark.parametrize("input_str, input_symbol, result", [ ("Skypro","f","Skypro"),(" ","t"," "),
     ("123","a","123") ] )
-def test_delete_symbol_negative(inp_str, inp_symbol, result):
-    res = string_utils.delete_symbol(inp_str, inp_symbol)
-    assert res == result
-
-@pytest.mark.negative
-@pytest.mark.delete_symbol("input_str, input_symbol, result", [ ("Skypro","None","Skypro") ] )
-def test_delete_symbol_negative(inp_str, inp_symbol, result):
-    res = string_utils.delete_symbol(inp_str, inp_symbol)
+def test_delete_symbol_negative(input_str, input_symbol, result):
+    res = string_utils.delete_symbol(input_str, input_symbol)
     assert res == result
