@@ -34,6 +34,7 @@ def capitalize_empty(in_string):
 def test_trim_positive(input_str, expected):
     assert string_utils.trim(input_str) == expected
 
+
 @pytest.mark.negative
 @pytest.mark.parametrize("input_str, expected", [ ("  skypro", "skypro"),
         (" 333", "333"), (" +7","+7"), (" ","") ] )
