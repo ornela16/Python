@@ -18,10 +18,14 @@ def test_capitalize_positive(input_str, expected):
 def test_capitalize_negative(input_str, expected):
     assert string_utils.capitalize(input_str) == expected
 
+
 @pytest.mark.negative
-@pytest.mark.parametrize("None")
-def test_capitalize_negative(None):
-    assert string_utils.capitalize(None) == TypeError
+@pytest.mark.parametrize(None)
+def capitalize_empty(in_string):
+    if not isinstance(in_string):
+        raise TypeError("Параметр 'in_string' должен быть строкой")
+        res == string.capitalize_empty(None)
+    assert string_utils.capitalize_empty(in_string) == TypeError
 
 
 @pytest.mark.positive
@@ -46,7 +50,7 @@ def test_contains_positive(input_str, input_symbol, result):
 
 @pytest.mark.negative
 @pytest.mark.parametrize("input_str, input_symbol, result", [ ("test","b",False),
-    (" ","a",False), ("555","s",False), ("-symbol","",False), ("007","2",False)])
+    (" ","a",False), ("555","s",False), ("-symbol",",",False), ("007","2",False)])
 def test_contains_negative(input_str, input_symbol, result):
     res = string_utils.contains(input_str, input_symbol)
     assert  res == result
