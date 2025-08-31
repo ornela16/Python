@@ -11,6 +11,13 @@ class StringUtils:
         """
         return string.capitalize()
 
+
+    def capitalize_empty(self, string: str) -> str:
+        if not isinstance(string, str):
+            raise TypeError("Параметр 'string' должен быть строкой")
+        return string.capitalize()
+
+
     def trim(self, string: str) -> str:
         """
         Принимает на вход текст и удаляет пробелы в начале, если они есть

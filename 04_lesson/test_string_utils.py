@@ -20,12 +20,11 @@ def test_capitalize_negative(input_str, expected):
 
 
 @pytest.mark.negative
-@pytest.mark.parametrize(None)
-def capitalize_empty(in_string):
-    if not isinstance(in_string):
-        raise TypeError("Параметр 'in_string' должен быть строкой")
-        res == string.capitalize_empty(None)
-    assert string_utils.capitalize_empty(in_string) == TypeError
+def test_capitalize_none():
+    with pytest.raises(TypeError) as exc_info:
+        string_utils.capitalize(None)
+    assert "Параметр 'string' должен быть строкой" in str(exc_info.value)
+
 
 
 @pytest.mark.positive
