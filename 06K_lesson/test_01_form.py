@@ -60,8 +60,7 @@ def test_forma():
 #                           ('email_color', 'green_color'),
 #                           ('phone_color', 'green_color'),
 #                           ('job_position_color', 'green_color'),
-#                           ('company_color', 'green_color')]
-#                          )
+#                           ('company_color', 'green_color')])
 #
 #      colors = ['first_name_color', 'last_name_color', 'address_color', 'city_color', 'country_color', 'email_color', 'phone_color',
 #               'job_position_color', 'company_color']
