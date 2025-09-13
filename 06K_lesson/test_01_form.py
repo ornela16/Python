@@ -18,7 +18,7 @@ def test_forma():
     driver.find_element(By.NAME, "first-name").send_keys("Иван")
     driver.find_element(By.NAME, "last-name").send_keys("Петров")
     driver.find_element(By.NAME, "address").send_keys("Ленина, 55-3")
-    driver.find_element(By.NAME, "zip-code").send_keys("N/A")
+    driver.find_element(By.NAME, "zip-code").send_keys()
     driver.find_element(By.NAME, "city").send_keys("Москва")
     driver.find_element(By.NAME, "country").send_keys("Россия")
     driver.find_element(By.NAME, "e-mail").send_keys("test@skypro.com")
@@ -26,7 +26,7 @@ def test_forma():
     driver.find_element(By.NAME, "job-position").send_keys("QA")
     driver.find_element(By.NAME, "company").send_keys("SkyPro")
     driver.find_element(By.TAG_NAME, "button")
-    element = driver.find_element(By.TAG_NAME,"button")
+    # element = driver.find_element(By.TAG_NAME,"button")
     try:
         element = wait.until(EC.element_to_be_clickable((By.TAG_NAME, "button")))
         element.click()
@@ -36,36 +36,12 @@ def test_forma():
     assert "success" in driver.find_element(By.ID, "first-name").get_attribute("class")
     assert "success" in driver.find_element(By.ID, "last-name").get_attribute("class")
     assert "success" in driver.find_element(By.ID, "address").get_attribute("class")
-    assert "success" in driver.find_element(By.ID, "zip-code").get_attribute("class")
     assert "success" in driver.find_element(By.ID, "city").get_attribute("class")
     assert "success" in driver.find_element(By.ID, "country").get_attribute("class")
     assert "success" in driver.find_element(By.ID, "e-mail").get_attribute("class")
     assert "success" in driver.find_element(By.ID, "phone").get_attribute("class")
     assert "success" in driver.find_element(By.ID, "job-position").get_attribute("class")
     assert "success" in driver.find_element(By.ID, "company").get_attribute("class")
-    # assert "danger" in driver.find_element(By.ID, "zip-code").get_attribute("class")     #не работает
-
-    color_zip = driver.find_element(By.CSS_SELECTOR, "[div#zip-code.alert.py-2.alert-danger]")
-    color_zip.value_of_css_property("background-color")
-    assert color_zip == "#f8d7da"
+    assert "danger" in driver.find_element(By.CSS_SELECTOR, "div#zip-code.alert.py-2.alert-danger").get_attribute("class")
 
     driver.quit()
-
-# @pytest.mark.parametrize('input_color, green_color',
-#                          [('first_name_color', 'green_color'),
-#                           ('last_name_color', 'green_color'),
-#                           ('address_color', 'green_color'),
-#                           ('city_color', 'green_color'),
-#                           ('country_color', 'green_color'),
-#                           ('email_color', 'green_color'),
-#                           ('phone_color', 'green_color'),
-#                           ('job_position_color', 'green_color'),
-#                           ('company_color', 'green_color')])
-#
-#      colors = ['first_name_color', 'last_name_color', 'address_color', 'city_color', 'country_color', 'email_color', 'phone_color',
-#               'job_position_color', 'company_color']
-#
-#     for color in colors:
-#         assert color == green_color
-#
-#     # assert 'zip_color' == red_color

@@ -28,8 +28,7 @@ def test_calculator():
         EC.text_to_be_present_in_element((By.CSS_SELECTOR, "div.screen"), "15"))
 
     driver.find_element(By.CSS_SELECTOR, "div.screen")
-    result = driver.find_element(By.CSS_SELECTOR, "div.screen")
-    assert result == 15
+    result = driver.find_element(By.CSS_SELECTOR, "div.screen").text
+    assert result == "15"
 
     driver.quit()
-
