@@ -20,7 +20,6 @@ def test_standard_user():
     driver.find_element(By.CSS_SELECTOR, "input#continue").click()
     total = driver.find_element(By.CSS_SELECTOR, "div.summary_total_label").text
     print(total)
-
     assert total == 'Total: $58.29'
 
     driver.quit()

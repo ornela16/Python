@@ -26,7 +26,7 @@ def test_forma():
     driver.find_element(By.NAME, "job-position").send_keys("QA")
     driver.find_element(By.NAME, "company").send_keys("SkyPro")
     driver.find_element(By.TAG_NAME, "button")
-    # element = driver.find_element(By.TAG_NAME,"button")
+
     try:
         element = wait.until(EC.element_to_be_clickable((By.TAG_NAME, "button")))
         element.click()
@@ -43,5 +43,10 @@ def test_forma():
     assert "success" in driver.find_element(By.ID, "job-position").get_attribute("class")
     assert "success" in driver.find_element(By.ID, "company").get_attribute("class")
     assert "danger" in driver.find_element(By.CSS_SELECTOR, "div#zip-code.alert.py-2.alert-danger").get_attribute("class")
+
+    zip_code = driver.find_element(By.ID, "zip-code")
+    color = zip_code.value_of_css_property("background-color")
+    print(color)
+    assert color in ("rgba(248, 215, 218, 1)")
 
     driver.quit()
