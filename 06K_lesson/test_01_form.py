@@ -26,7 +26,6 @@ def test_forma():
     driver.find_element(By.NAME, "job-position").send_keys("QA")
     driver.find_element(By.NAME, "company").send_keys("SkyPro")
     driver.find_element(By.TAG_NAME, "button")
-
     try:
         element = wait.until(EC.element_to_be_clickable((By.TAG_NAME, "button")))
         element.click()

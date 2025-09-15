@@ -17,7 +17,6 @@ def test_calculator():
     driver.find_element(By.XPATH, "//span[text()='+']").click()
     driver.find_element(By.XPATH, "//span[text()='8']").click()
     driver.find_element(By.CSS_SELECTOR, "span.btn.btn-outline-warning")
-
     try:
         element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "span.btn.btn-outline-warning")))
         element.click()
