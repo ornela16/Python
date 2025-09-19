@@ -20,4 +20,3 @@ def test_calculator():
     page.set_equal("=")
     page.result("15")
     page.check()
-
