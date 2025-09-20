@@ -18,5 +18,5 @@ def test_calculator():
     page.set_operator("+")
     page.set_number8("8")
     page.set_equal("=")
-    page.result("15")
-    page.check()
+    result = page.result("15")
+    assert result == "15"
