@@ -1,3 +1,5 @@
+from time import sleep
+
 import pytest
 from selenium import webdriver
 from pages.form_card import CardPage
@@ -9,12 +11,12 @@ from pages.form_order import OrderPage
 def driver():
     driver = webdriver.Firefox()
     driver.maximize_window()
+    driver.get("https://www.saucedemo.com")
     driver.implicitly_wait(10)
     yield driver
     driver.quit()
 
-def test_form_auth():
-    driver = webdriver.Firefox()
+def test_form_auth(driver):
     form_page = AuthPage(driver)
     form_page.open()
     form_page.input_login("standard_user")
@@ -34,5 +36,4 @@ def test_form_auth():
     form_page.postal_code( "184600")
     form_page.button_continue()
     total = form_page.total()
-
     assert total == 'Total: $58.29'

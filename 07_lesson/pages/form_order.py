@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 class OrderPage:
   def __init__(self, driver):
     self.driver = driver
-    self.wait = WebDriverWait(driver, 5)
+    self.wait = WebDriverWait(driver, 15)
 
   def get_open_order(self):
     self.driver.get("https://www.saucedemo.com/checkout-step-one.html")
