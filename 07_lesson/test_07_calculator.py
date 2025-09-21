@@ -5,14 +5,13 @@ from pages.calculator_page import CalculatorPage
 @pytest.fixture
 def driver():
     driver = webdriver.Chrome()
-    driver.implicitly_wait(10)
+    driver.maximize_window()
+    driver.get("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html")
     yield driver
     driver.quit()
 
 def test_calculator(driver):
-    driver = webdriver.Chrome()
     page = CalculatorPage(driver)
-    page.open()
     page.set_delay(45)
     page.set_number7("7")
     page.set_operator("+")

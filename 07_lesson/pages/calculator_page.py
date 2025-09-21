@@ -2,16 +2,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-
 class CalculatorPage:
   def __init__(self, driver):
     self.driver = driver
     self.driver.implicitly_wait(4)
     self.driver.maximize_window()
     self.wait = WebDriverWait(self.driver, 50)
-
-  def open(self):
-    self.driver.get("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html")
 
   def set_delay(self, value,):
     self.driver.find_element(By.ID, "delay").clear()
@@ -33,5 +29,5 @@ class CalculatorPage:
       self.wait.until(
       EC.text_to_be_present_in_element((By.CSS_SELECTOR, "div.screen"), "value"))
 
-      txt = self.driver.find_element(By.CSS_SELECTOR, "div.screen").text
-      return int(txt)
+      result = self.driver.find_element(By.CSS_SELECTOR, "div.screen").text
+      return int(result)
