@@ -9,7 +9,7 @@ def driver():
     yield driver
     driver.quit()
 
-def test_calculator():
+def test_calculator(driver):
     driver = webdriver.Chrome()
     page = CalculatorPage(driver)
     page.open()

@@ -8,6 +8,7 @@ class CalculatorPage:
     self.driver = driver
     self.driver.implicitly_wait(4)
     self.driver.maximize_window()
+    self.wait = WebDriverWait(self.driver, 50)
 
   def open(self):
     self.driver.get("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html")
@@ -29,9 +30,8 @@ class CalculatorPage:
     self.driver.find_element(By.CSS_SELECTOR, "span.btn.btn-outline-warning").click()
 
   def result(self, value):
-
-    self.wait = WebDriverWait(self.driver, 50)
-    self.wait.until(
+      self.wait.until(
       EC.text_to_be_present_in_element((By.CSS_SELECTOR, "div.screen"), "value"))
 
-    return  self.driver.find_element(By.CSS_SELECTOR, "div.screen").text
+      txt = self.driver.find_element(By.CSS_SELECTOR, "div.screen").text
+      return int(txt)
