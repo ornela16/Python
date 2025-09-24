@@ -16,7 +16,7 @@ def driver():
     yield driver
     driver.quit()
 
-def test_form_auth(driver):
+def test_form_shop(driver):
     form_page = AuthPage(driver)
     form_page.open()
     form_page.input_login("standard_user")
