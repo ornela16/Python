@@ -1,17 +1,21 @@
 from sqlalchemy import create_engine, inspect, text
 
 db_connection_string = "postgresql://postgres:t6XbHWsGfw6@localhost:5432/postgres"
-db = create_engine(db_connection_string)         #  подключение к базе данных
+db = create_engine(db_connection_string)         # подключение к базе данных
 
 # Получить список предметов
+
 def test_db_connection():
+
 # Используем инспектор для получения информации о таблицах
 	inspector = inspect(db)
 	names = inspector.get_table_names()
 	assert names[1] == 'subject'
 
 # Получить строки из таблицы: select
+
 def test_select():
+
     connection = db.connect()
     result = connection.execute(text("SELECT * FROM subject"))
     rows = result.mappings().all()
@@ -21,17 +25,22 @@ def test_select():
     assert row1['subject_title'] == "English"
     connection.close()
 
-# Получить строку по одному фильтру
-def test_select_1_row():
-	connection = db.connect()
-	sql_statement = text("SELECT * FROM subject WHERE subject_id = :subject_id")
-	result = connection.execute(sql_statement, {"subject_id": 6})
-	rows = result.mappings().all()
-	assert len(rows) == 1
-	assert rows[0]["subject_title"] == "Russian"
-	connection.close()
 
-	# Получить строки по двум фильтрам
+
+# Получить строку по одному фильтру
+
+def test_select_1_row():
+
+    connection = db.connect()
+    sql_statement = text("SELECT * FROM subject WHERE subject_id = :subject_id")
+    result = connection.execute(sql_statement, {"subject_id": 6})
+    rows = result.mappings().all()
+    assert len(rows) == 1
+    assert rows[0]["subject_title"] == "Russian"
+    connection.close()
+
+    # Получить строки по двум фильтрам
+
 def test_select_1_row_with_two_filters():
     connection = db.connect()
     sql_statement = text("SELECT * FROM subject " "WHERE \"subject_id\" = :subject_id AND subject_title = :subject_title")
@@ -41,6 +50,7 @@ def test_select_1_row_with_two_filters():
     assert len(rows) == 1
 
 # 	Добавить предмет: insert
+
 def test_insert():
     connection = db.connect()
     transaction = connection.begin()
@@ -52,6 +62,7 @@ def test_insert():
     connection.close()
 
 # 	Обновить таблицу: update
+
 def test_update():
     connection = db.connect()                      #  подключение к базе данных
     transaction = connection.begin()
@@ -63,6 +74,7 @@ def test_update():
     connection.close()
 
 # 	Удалить предмет: delete
+
 def test_delete():
     connection = db.connect()
     transaction = connection.begin()
