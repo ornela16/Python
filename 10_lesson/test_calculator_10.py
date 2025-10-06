@@ -1,7 +1,6 @@
 import pytest
 import allure
 from selenium import webdriver
-from sqlalchemy import values
 
 from CalculatorPage_10 import CalculatorPage
 
@@ -25,7 +24,7 @@ def driver():
 
 
 @allure.title("Тестирование калькулятора: {num1} {operation} {num2} "
-              "= {expected_result}")
+              "= {result}")
 @allure.description("Тест проверяет корректность работу калькулятора "
                     "с операцией сложения при задержке вывода результата.")
 @allure.feature("Калькулятор")
