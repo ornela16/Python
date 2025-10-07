@@ -52,7 +52,7 @@ def test_form_shop(driver):
     with allure.step(f"Нажатие кнопки 'Add to cart' для добавления в корзину третьего продукта."):
         form_page.add_product_3()
 
-    with allure.step("Нажимает на значок 'корзина' для перехода на страницу корзины товаров."):
+    with allure.step("Нажатие на значок 'корзина' для перехода на страницу корзины товаров."):
         form_page.jump_card()
 
     form_page = CardPage(driver)
@@ -77,7 +77,7 @@ def test_form_shop(driver):
     with allure.step(f"Нажатие кнопки 'continue', переход на следующую страницу"):
         form_page.button_continue()
 
-    with allure.step("Получение итоговой стоимости заказа: {total}"):
+    with allure.step("Получение итоговой стоимости заказа"):
         total = form_page.total()
 
     with allure.step("Проверка результата"):
